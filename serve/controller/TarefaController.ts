@@ -45,90 +45,67 @@ class TarefasController {
       offset: offset,
       order: [[sort, order]],
     });
-    res.json(users);
+    res.json(tarefas);
   };
 
   create = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const data = await this._validateData(req.body, req.params.userId);
-      const user = await UserModel.create(data);
-      res.json(user);
+      const data = await this._validateData(req.body, req.params.tarefaId);
+      const tarefa = await TarefaModel.create(data);
+      res.json(tarefa);
     } catch (error) {
       res.status(400).json({ error: (error as Error).message });
     }
   };
 
   show = async (req: Request, res: Response, next: NextFunction) => {
-    const user = await UserModel.findByPk(req.params.userId);
-    res.json(user);
+    const tarefa = await TarefaModel.findByPk(req.params.tarefaId);
+    res.json(tarefa);
   };
 
   update = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const id: any = req.params.userId;
+      const id: any = req.params.tarefaId;
       const data = await this._validateData(req.body, id);
-      await UserModel.update(data, {
+      await TarefaModel.update(data, {
         where: {
           id: id,
         },
       });
-      res.json(await UserModel.findByPk(id));
+      res.json(await TarefaModel.findByPk(id));
     } catch (error) {
       res.status(400).json({ error: (error as Error).message });
     }
   };
 
   delete = async (req: Request, res: Response, next: NextFunction) => {
-    await UserModel.destroy({
+    await TarefaModel.destroy({
       where: {
-        id: req.params.userId,
+        id: req.params.tarefaId,
       },
     });
     res.json({});
   };
   _validateData = async (data: any, id: any) => {
     const attributes = [
-      "descricao",
       "data_vencimento",
-      "email",
-      "password",
-      "birthDate",
+      "descricao",
+      "situacao",
+      "prioridade",
     ];
-    const user: any = {};
+    const tarefa: any = {};
     for (const attribute of attributes) {
       if (!data[attribute]) {
         throw new Error(`The attribute "${attribute}" is required.`);
       }
-      user[attribute] = data[attribute];
+      tarefa[attribute] = data[attribute];
     }
 
-    if (await this._checkIfEmailExists(user.email, id)) {
-      throw new Error(
-        `The user with mail address "${user.email}" already exists.`
-      );
-    }
-
-    return user;
-  };
-
-  _checkIfEmailExists = async (email: string, id: Number) => {
-    const where: any = {
-      email: email,
-    };
-
-    if (id) {
-      where.id = { [Op.ne]: id }; // WHERE id != id
-    }
-
-    const count = await UserModel.count({
-      where: where,
-    });
-
-    return count > 0;
+    return tarefa;
   };
 
   _sendMail = async (req: Request, res: Response, next: NextFunction) => {
-    let email_user = "carlaselt@gmail.com";
+    let email_tarefa = "carlaselt@gmail.com";
     let email_password = "12345";
     let email_to = req.params.email;
     let email_subject = "Welcome to Drugs Store System";
@@ -140,13 +117,13 @@ class TarefasController {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: email_user,
+        user: email_tarefa,
         pass: email_password,
       },
     });
 
     var mailOptions = {
-      from: email_user,
+      from: email_tarefa,
       to: email_to,
       subject: email_subject,
       text: email_content,
@@ -169,25 +146,25 @@ class TarefasController {
     res: Response,
     next: NextFunction
   ) => {
-    let users = await UserModel.findAll();
+    let tarefas = await TarefaModel.findAll();
     let html = `<table border="1" style="width:100%">
     <h1>Relatório de Usuários do Sistema</h1>
     <h4>Generated at: ${new Date()}</h4>
     <tr>
     <th>ID</th>
-    <th>Nome</th>
-    <th>Cargo</th>
-    <th>Email</th>
-    <th>Data de nascimento</th>
+    <th>Data vencimento</th>
+    <th>Situacao</th>
+    <th>Prioridade</th>
     </tr>`;
-    for (let i = 0; i < users.length; i++) {
-      let user = users[i];
+
+    for (let i = 0; i < tarefas.length; i++) {
+      let tarefa = tarefas[i];
       html += `<tr>
-      <td>${user.id}</td>
-      <td>${user.name}</td>
-      <td>${user.office}</td>
-      <td>${user.email}</td>
-      <td>${user.birthDate}</td>
+      <td>${tarefa.id}</td>
+      <td>${tarefa.data_vencimento}</td>
+      <td>${tarefa.descricao}</td>
+      <td>${tarefa.situacao}</td>
+      <td>${tarefa.prioridade}</td>
       </tr>`;
     }
     html += `</table>`;
@@ -210,17 +187,17 @@ class TarefasController {
     res: Response,
     next: NextFunction
   ) => {
-    let users = await UserModel.findAll();
+    let tarefas = await TarefaModel.findAll();
 
-    let csv: string = `ID;Username;Office;Email
+    let csv: string = `ID;Data de Vencimento;Situação;Prioridade
     `;
-    for (let i = 0; i < users.length; i++) {
-      let user = users[i];
-      csv += `${user.id};${user.name};${user.office};${user.email}
+    for (let i = 0; i < tarefas.length; i++) {
+      let tarefa = tarefas[i];
+      csv += `${tarefa.id};${tarefa.data_vencimento};${tarefa.descricao};${tarefa.situacao};${tarefa.prioridade}
       `;
     }
     res.header("Content-Type", "text/csv");
-    res.header("Content-Disposition", "attachment; filename=users.csv");
+    res.header("Content-Disposition", "attachment; filename=tarefas.csv");
     res.header("Pragma", "attachment; no-cache");
     res.header("Expires", "0");
     res.send(csv);

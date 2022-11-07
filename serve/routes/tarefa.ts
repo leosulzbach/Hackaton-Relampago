@@ -17,19 +17,19 @@ const validateTarefaId = async (
   next();
 };
 
-router.get("/tarefas/relatorio/pdf", TarefasController._generateRelator);
-router.get("/tarefas/relatorio/csv", TarefasController._generateRelatorCSV);
+router.get("/tarefas/relatorio/pdf", tarefasController._generateRelator);
+router.get("/tarefas/relatorio/csv", tarefasController._generateRelatorCSV);
 
-router.get("/tarefas", TarefasController.index);
+router.get("/tarefas", tarefasController.index);
 
-router.post("/Tarefas", TarefasController.create);
+router.post("/tarefas", tarefasController.create);
 
-router.get("/Tarefas/:TarefaId", validateTarefaId, TarefasController.show);
+router.get("/tarefas/:tarefaId", validateTarefaId, tarefasController.show);
 
-router.put("/Tarefas/:userId", validateUserId, usersController.update);
+router.put("/tarefas/:tarefaId", validateTarefaId, tarefasController.update);
 
-router.delete("/users/:userId", validateUserId, usersController.delete);
+router.delete("/tarefas/:tarefaId", validateTarefaId, tarefasController.delete);
 
-router.get("/email/:email", usersController._sendMail);
+router.get("/email/:email", tarefasController._sendMail);
 
 export default router;
