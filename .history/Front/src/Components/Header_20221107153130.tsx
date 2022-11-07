@@ -37,12 +37,11 @@ export const Header = () => {
                 justify="flex-end"
                 gap={10}
             >
-                {/* <Input
-                    border={"2px solid #3182CE"}
-                    type={"text"}
+                <Input
+                    type={"text"} 
                     w={"150px"}
-                    h={"40px"}
-                    color="#cecece" /> */}
+                    h={"40px"} 
+                    color="#cecece"/>
                 <Link
 
                     href="/sobre"

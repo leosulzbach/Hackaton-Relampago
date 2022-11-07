@@ -15,7 +15,7 @@ export interface Cadastro {
 }
 
 export const Home = () => {
-   
+    export function CadastroList() {
         const [CadastroList, setCadastroList] = useState<Cadastro[]>([]);
         const [CadastroFilter, setCadastroFilter] = useState<Cadastro[]>(CadastroList);
 
@@ -49,7 +49,7 @@ export const Home = () => {
                 CadastroList);
         }, [CadastroList])
 
-    
+    }
     return (
         <Flex>
             <Header />

@@ -1,6 +1,4 @@
 import { Box, Flex, Grid, Text } from '@chakra-ui/react'
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Header } from '../Components/Header'
 
 
@@ -9,52 +7,18 @@ export interface Cadastro {
     descricao: string;
     situacao: string;
     data_vencimento: string;
-    prioridade: string;
+    prioridade: number;
     email: string
-
-}
+    
+  }
 
 export const Home = () => {
-   
-        const [CadastroList, setCadastroList] = useState<Cadastro[]>([]);
-        const [CadastroFilter, setCadastroFilter] = useState<Cadastro[]>(CadastroList);
 
-
-        useEffect(() => {
-            axios.get<Cadastro[]>("http://localhost:3000/tarefas").then((response) => {
-                setCadastroList(response.data);
-            });
-        }, []);
-
-
-        const [tarefa, settarefa] = useState<any>();
-
-        useEffect(() => {
-
-
-            setCadastroFilter(
-
-                CadastroList.filter(cadastro =>
-                    cadastro.descricao.toLowerCase().includes(tarefa) || cadastro.email.toLocaleLowerCase().includes(tarefa) || cadastro.prioridade.includes(tarefa) || cadastro.data_vencimento.includes(tarefa))
-            )
-
-        }, [tarefa])
-
-
-        useEffect(() => {
-
-
-            setCadastroFilter(
-
-                CadastroList);
-        }, [CadastroList])
-
-    
     return (
         <Flex>
-            <Header />
+            <Header /> 
 
-
+           
             <Grid
                 templateColumns='repeat(3, 1fr)'
                 ml={"6rem"}
@@ -71,10 +35,10 @@ export const Home = () => {
                     h={"400px"}
                 >
                     <Text
-                        p={"1rem"}
-                        fontSize={"1.5rem"}
-                        fontWeight={"semibold"}
-                        color={"blue.700"}
+                    p={"1rem"}
+                    fontSize={"1.5rem"}
+                    fontWeight={"semibold"}
+                    color={"blue.700"}
                     >A fazer</Text>
 
                 </Box>
@@ -85,10 +49,10 @@ export const Home = () => {
                     w={"300px"}
                     h={"400px"}>
                     <Text
-                        p={"1rem"}
-                        fontSize={"1.5rem"}
-                        fontWeight={"semibold"}
-                        color={"blue.700"}
+                    p={"1rem"}
+                    fontSize={"1.5rem"}
+                    fontWeight={"semibold"}
+                    color={"blue.700"}
                     >Fazendo</Text>
                 </Box>
                 <Box
@@ -98,10 +62,10 @@ export const Home = () => {
                     w={"300px"}
                     h={"400px"}>
                     <Text
-                        p={"1rem"}
-                        fontSize={"1.5rem"}
-                        fontWeight={"semibold"}
-                        color={"blue.700"}
+                    p={"1rem"}
+                    fontSize={"1.5rem"}
+                    fontWeight={"semibold"}
+                    color={"blue.700"}
                     >Feito</Text>
                 </Box>
 
