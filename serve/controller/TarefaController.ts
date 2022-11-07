@@ -105,9 +105,9 @@ class TarefasController {
   };
 
   _sendMail = async (req: Request, res: Response, next: NextFunction) => {
-    let email_tarefa = "carla.seltenreich@universo.univates.br";
-    let email_password = "100meat!";
-    let email_to = "leonardo.sulzbach1@universo.univates.br";
+    let email_tarefa = "leonardo.sulzbach1@universo.univates.br";
+    let email_password = "Leonardo0403";
+    let email_to = req.params.email;
     let email_subject = "Welcome to Drugs Store System";
     let email_content =
       "Welcome, you have been registered in the  Drugs Store System!";
