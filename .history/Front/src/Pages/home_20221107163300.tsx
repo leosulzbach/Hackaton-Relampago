@@ -19,7 +19,7 @@ export interface Cadastro {
 export const Home = () => {
 
     const [CadastroList, setCadastroList] = useState<Cadastro[]>([]);
-    
+    const [CadastroFilter, setCadastroFilter] = useState<Cadastro[]>(CadastroList);
 
 
     useEffect(() => {
@@ -28,8 +28,19 @@ export const Home = () => {
         });
     }, []);
 
-        console.log(CadastroList)
 
+    const [tarefas, settarefa] = useState<any>();
+
+
+
+
+    useEffect(() => {
+
+
+        setCadastroFilter(
+
+            CadastroList);
+    }, [CadastroList])
 
 
     return (
@@ -37,8 +48,8 @@ export const Home = () => {
             <Header />
 
 
-            <Flex
-                direction={"column"}
+            <Grid
+                templateColumns='repeat(3, 1fr)'
                 ml={"6rem"}
                 mt={"10rem"}
                 alignItems={"center"}
@@ -49,7 +60,7 @@ export const Home = () => {
                     border={"4px solid #cecece"}
                     boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
                     borderRadius={8}
-                    w={"100%"}
+                    w={"300px"}
                     h={"400px"}
 
                 >
@@ -73,9 +84,8 @@ export const Home = () => {
                     border={"4px solid #cecece"}
                     boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
                     borderRadius={8}
-                    w={"100%"}
-                    h={"400px"}
-                    >
+                    w={"300px"}
+                    h={"400px"}>
                     <Text
                         p={"1rem"}
                         fontSize={"1.5rem"}
@@ -94,7 +104,7 @@ export const Home = () => {
                     border={"4px solid #cecece"}
                     boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
                     borderRadius={8}
-                    w={"100%"}
+                    w={"300px"}
                     h={"400px"}>
                     <Text
                         p={"1rem"}
@@ -104,7 +114,7 @@ export const Home = () => {
                     >Feito</Text>
                 </Box>
 
-            </Flex>
+            </Grid>
         </Flex>
     )
 

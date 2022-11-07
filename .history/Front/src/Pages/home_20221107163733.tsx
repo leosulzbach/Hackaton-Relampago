@@ -37,8 +37,8 @@ export const Home = () => {
             <Header />
 
 
-            <Flex
-                direction={"column"}
+            <Grid
+                templateColumns='repeat(3, 1fr)'
                 ml={"6rem"}
                 mt={"10rem"}
                 alignItems={"center"}
@@ -104,7 +104,7 @@ export const Home = () => {
                     >Feito</Text>
                 </Box>
 
-            </Flex>
+            </Grid>
         </Flex>
     )
 

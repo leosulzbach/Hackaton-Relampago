@@ -47,7 +47,7 @@ export const Header = () => {
                         borderBottom: '4px solid  blue', transition: 'all 0.3s ease-out', transform: 'translate(-11px, 0px)'
                     }}
                 >
-                    Tipos
+                    Sobre
                 </Link>
                 <Link
                     href="/contato"

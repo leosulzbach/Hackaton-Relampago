@@ -12,12 +12,8 @@ export const Card = ({id, descricao, data_vencimento, situacao, prioridade }:Cad
     return (
         <DivContainerBusca>
             <ContentContainer>
-                <CardInfo title ="id" data={id} />
-                <CardInfo title="Descrição" data={descricao} />
-                <CardInfo title="Data vencimento" data={data_vencimento} />
-                <CardInfo title="Situação" data={situacao} />
-                <CardInfo title="Prioridade" data={prioridade} />
-
+                <CardInfo title ="Codigo" data={id} />
+                <CardInfo title="Nome" data={descricao} />
                 <Plus className="adicionar"size={32} />
                 
             

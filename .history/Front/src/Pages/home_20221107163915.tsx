@@ -38,7 +38,7 @@ export const Home = () => {
 
 
             <Flex
-                direction={"column"}
+                direction={"row"}
                 ml={"6rem"}
                 mt={"10rem"}
                 alignItems={"center"}
