@@ -1,4 +1,4 @@
-import { Pencil, Plus, Trash } from "phosphor-react";
+import { Plus, Trash } from "phosphor-react";
 import { Cadastro } from "../../Pages/home";
 import { CardInfo } from "./CardInfo";
 import { ContentContainer, DivContainerBusca } from "./Cards.styles";

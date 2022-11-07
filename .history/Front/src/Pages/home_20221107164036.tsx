@@ -40,7 +40,6 @@ export const Home = () => {
             <Flex
                 direction={"column"}
                 ml={"6rem"}
-                mr={"6rem"}
                 mt={"10rem"}
                 alignItems={"center"}
                 width='100%'
