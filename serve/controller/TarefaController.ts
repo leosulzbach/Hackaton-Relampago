@@ -148,7 +148,7 @@ class TarefasController {
   ) => {
     let tarefas = await TarefaModel.findAll();
     let html = `<table border="1" style="width:100%">
-    <h1>Relatório de Usuários do Sistema</h1>
+    <h1>Relatório de tarefas</h1>
     <h4>Generated at: ${new Date()}</h4>
     <tr>
     <th>ID</th>
@@ -189,7 +189,7 @@ class TarefasController {
   ) => {
     let tarefas = await TarefaModel.findAll();
 
-    let csv: string = `ID;Data de Vencimento;Situação;Prioridade
+    let csv: string = `ID;Descrição;Data de Vencimento;Situação;Prioridade;
     `;
     for (let i = 0; i < tarefas.length; i++) {
       let tarefa = tarefas[i];
