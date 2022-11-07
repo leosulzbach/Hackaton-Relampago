@@ -5,7 +5,7 @@ import { ContentContainer, DivContainerBusca } from "./Cards.styles";
 
 
 
-export const Card = ({id, descricao, data_vencimento, situacao, prioridade }:Cadastro) => {
+export const CardTipo = ({id, descricao, data_vencimento, situacao, prioridade }:Cadastro) => {
  
    
 

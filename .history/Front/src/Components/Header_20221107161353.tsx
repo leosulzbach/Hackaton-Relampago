@@ -37,29 +37,29 @@ export const Header = () => {
                 justify="flex-end"
                 gap={10}
             >
-                <Link
-                    href="/home"
-                    color="gray.200"
-                    fontSize={18}
-                    _hover={{
-                        borderBottom: '4px solid  blue', transition: 'all 0.3s ease-out', transform: 'translate(-11px, 0px)'
-                    }}
-
-                >
-                    Inicio
-                </Link>
-                <Link
-
-                    href="/tipos"
-                    color="gray.200"
-                    fontSize={18}
-                    _hover={{
-                        borderBottom: '4px solid  blue', transition: 'all 0.3s ease-out', transform: 'translate(-11px, 0px)'
-                    }}
-                >
-                    Tipos
-                </Link>
                
+                <Link
+
+                    href="/sobre"
+                    color="gray.200"
+                    fontSize={18}
+                    _hover={{
+                        borderBottom: '4px solid  blue', transition: 'all 0.3s ease-out', transform: 'translate(-11px, 0px)'
+                    }}
+                >
+                    Sobre
+                </Link>
+                <Link
+                    href="/contato"
+                    color="gray.200"
+                    fontSize={18}
+                    _hover={{
+                        borderBottom: '4px solid  blue', transition: 'all 0.3s ease-out', transform: 'translate(-11px, 0px)'
+                    }}
+
+                >
+                    Contato
+                </Link>
                 <Sun size={24} color={"white"} />
             </Flex>
 

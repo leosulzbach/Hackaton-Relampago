@@ -37,8 +37,25 @@ export const Header = () => {
                 justify="flex-end"
                 gap={10}
             >
+                <Input
+                    border={"3px solid blue"}
+                    type={"text"}
+                    w={"150px"}
+                    h={"40px"}
+                    color="#cecece" />
                 <Link
-                    href="/home"
+
+                    href="/sobre"
+                    color="gray.200"
+                    fontSize={18}
+                    _hover={{
+                        borderBottom: '4px solid  blue', transition: 'all 0.3s ease-out', transform: 'translate(-11px, 0px)'
+                    }}
+                >
+                    Sobre
+                </Link>
+                <Link
+                    href="/contato"
                     color="gray.200"
                     fontSize={18}
                     _hover={{
@@ -46,20 +63,8 @@ export const Header = () => {
                     }}
 
                 >
-                    Inicio
+                    Contato
                 </Link>
-                <Link
-
-                    href="/tipos"
-                    color="gray.200"
-                    fontSize={18}
-                    _hover={{
-                        borderBottom: '4px solid  blue', transition: 'all 0.3s ease-out', transform: 'translate(-11px, 0px)'
-                    }}
-                >
-                    Tipos
-                </Link>
-               
                 <Sun size={24} color={"white"} />
             </Flex>
 

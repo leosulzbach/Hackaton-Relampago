@@ -1,4 +1,4 @@
-import { Pencil, Plus, Trash } from "phosphor-react";
+import { Plus } from "phosphor-react";
 import { Cadastro } from "../../Pages/home";
 import { CardInfo } from "./CardInfo";
 import { ContentContainer, DivContainerBusca } from "./Cards.styles";
@@ -18,8 +18,7 @@ export const Card = ({id, descricao, data_vencimento, situacao, prioridade }:Cad
                 <CardInfo title="Situação" data={situacao} />
                 <CardInfo title="Prioridade" data={prioridade} />
 
-                <Pencil size={32} color="#0c0d0d" />
-                <Trash size={32} color="#0c0d0d" />
+                <Plus className="adicionar"size={32} />
                 
             
             </ContentContainer>
